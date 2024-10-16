@@ -36,5 +36,4 @@ vim.schedule(function()
   require "mappings"
 end)
 
-require 'nvim-treesitter.install'.compilers = { "clang" }
-
+require("nvim-treesitter.install").compilers = { "clang" } -- windows treesitter deps
