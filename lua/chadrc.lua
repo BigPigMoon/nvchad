@@ -13,6 +13,10 @@ M.ui = {
   telescope = {
     style = "bordered",
   },
+
+  statusline = {
+    separator_style = "arrow",
+  },
 }
 
 M.base46 = {
