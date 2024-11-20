@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "rust_analyzer" }
+local servers = { "html", "cssls", "rust_analyzer", "gopls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 local util = require "lspconfig/util"
 
@@ -16,6 +16,14 @@ for _, lsp in ipairs(servers) do
     capabilities = nvlsp.capabilities,
   }
 end
+
+lspconfig.gopls.setup {
+  on_attach = nvlsp.on_attach,
+  capabilities = nvlsp.capabilities,
+  cmd = { "gopls" },
+  filetype = { "go", "gomod", "gowork", "gotmpl" },
+  root_dir = util.root_pattern("go.mod", "go.work", ".git"),
+}
 
 lspconfig.rust_analyzer.setup {
   on_attach = nvlsp.on_attach,
